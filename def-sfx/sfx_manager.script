@@ -1,0 +1,23 @@
+local sfx = require "game.modules.sfx"
+local constants = require "game.modules.constants"
+
+function init(self)
+	self.sfx = sfx()
+end
+
+function final(self)
+	self.sfx:stop_all()
+end
+
+function update(self, dt)
+	self.sfx:update_pan()
+	self.sfx:update_gain_2D()
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == constants.REGISTER then
+		self.sfx:register(message.properties)
+	elseif message_id == constants.UNREGISTER then
+		self.sfx:unregister(message.id)
+	end
+end
