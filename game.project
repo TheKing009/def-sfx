@@ -14,3 +14,6 @@ input_method = HiddenInputField
 [project]
 title = defsfx
 
+[library]
+include_dirs = def-sfx
+

@@ -1,5 +1,4 @@
-local sfx = require "game.modules.sfx"
-local constants = require "game.modules.constants"
+local sfx = require "def-sfx.sfx"
 
 function init(self)
 	self.sfx = sfx()

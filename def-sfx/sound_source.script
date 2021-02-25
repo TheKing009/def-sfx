@@ -1,6 +1,7 @@
-local sfx = require "game.modules.sfx"
+local sfx = require "def-sfx.sfx"
 
 go.property("id", hash(""))
+go.property("path", hash(""))
 
 go.property("is_2D", false)
 go.property("pan", false)
@@ -14,6 +15,7 @@ go.property("gain", 1)
 function init(self)
 	msg.post("/game#sfx_manager", "register", {properties = {
 		id = self.id,
+		path = self.path
 		source = go.get_id(),
 		listener = go.get_id("/calvin"),
 
