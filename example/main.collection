@@ -13,6 +13,34 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "sfx_manager"
+    properties {
+      id: "target"
+      value: "/target"
+      type: PROPERTY_TYPE_URL
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "target"
+  prototype: "/example/target.go"
+  position {
+    x: 100.0
+    y: 320.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -71,8 +99,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 0.0
-    y: 0.0
+    x: 480.0
+    y: 320.0
     z: 0.0
   }
   rotation {
