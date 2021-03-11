@@ -1,12 +1,9 @@
-local sound_helper = require "game.modules.sfx_helper"
-local class = require "game.modules.class"
+local sound_helper = require "def-sfx.sfx_helper"
+local class = require "def-sfx.dependancies.class"
 
 local M = class:extend()
 
---to be populated as more sounds are added
 local sounds = {}
-
-sounds[hash("tv")] = {name = "tv", is_playing = false}
 
 function M:init()
 	self.sounds_2D = {}
@@ -14,14 +11,13 @@ function M:init()
 end
 
 function M.play(id)
-	print(id, sounds[id].is_playing)
 	if sounds[id].is_playing then
 		return
 	end
 	
-	local name = sounds[id].name
+	local path = sounds[id].path
 	sounds[id].is_playing = true	
-	sound.play("controller:/sfx#"..name, {}, function()
+	sound.play(path, {}, function()
 		sounds[id].is_playing = false
 	end)
 end
@@ -31,13 +27,12 @@ function M:update_pan()
 	for _, v in pairs(self.sounds_pan) do
 		local id = v.id
 		if sounds[id].is_playing then
-			local name = sounds[id].name
 			local source = go.get_position(v.source)
 			local listener = go.get_position(v.listener)
 			local deadzone = v.pan_range
 
 			local pan = sound_helper.calculate_pan(source, listener, deadzone)
-			sound.set_pan("controller:/sfx#"..name, pan)
+			sound.set_pan(v.path, pan)
 		end
 	end
 end
@@ -53,15 +48,14 @@ function M:update_gain_2D()
 			local gain = v.gain
 
 			gain = gain * sound_helper.calculate_gain_2D(source, listener, deadzone)
-			sound.set_gain("controller:/sfx#"..name, gain)
+			sound.set_gain(v.path, gain)
 		end
 	end
 end
 
 function M:stop_all()
 	for _, v in pairs(sounds) do
-		local name = v.name
-		sound.stop("controller:/sfx#"..name)
+		sound.stop(v.path)
 	end
 end
 
@@ -71,6 +65,12 @@ function M:register(properties)
 
 	if pan then table.insert(self.sounds_pan, properties) end
 	if is_2D then table.insert(self.sounds_2D, properties) end
+
+	sounds[properties.id]{
+		name = properties.name,
+		is_playing = false,
+		path = properties.path,
+	}
 end
 
 function M:unregister(id)
