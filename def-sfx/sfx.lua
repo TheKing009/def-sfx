@@ -12,14 +12,13 @@ function M:init(target)
 end
 
 function M.play(id)
-	pprint(id)
 	if sounds[id].is_playing then
 		return
 	end
 	
 	local path = sounds[id].path
 	sounds[id].is_playing = true	
-	sound.play(path, {}, function()
+	sound.play(path, {gain = sounds[id].gain}, function()
 		sounds[id].is_playing = false
 	end)
 end
@@ -32,7 +31,7 @@ function M:update_pan()
 			local source = go.get_position(v.source)
 			local listener = go.get_position(self.target)
 			local deadzone = v.pan_range
-
+		
 			local pan = sound_helper.calculate_pan(source, listener, deadzone)
 			sound.set_pan(sounds[id].path, pan)
 		end
@@ -70,6 +69,7 @@ function M:register(properties)
 	sounds[properties.id] = {
 		is_playing = false,
 		path = properties.path,
+		gain = properties.gain
 	}
 end
 

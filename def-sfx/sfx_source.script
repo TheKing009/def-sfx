@@ -13,7 +13,7 @@ go.property("pan_range", 50)
 go.property("gain", 1)
 
 function init(self)
-	msg.post("/sfx_manager#sfx_manager", "register", {properties = {
+	msg.post(self.sfx_manager, "register", {properties = {
 		id = go.get_id(),
 		path = self.path,
 		source = go.get_id(),
@@ -28,7 +28,7 @@ function init(self)
 	}})
 
 	if self.play_on_awake then
-		msg.post("/sfx_manager#sfx_manager", "play", {id = go.get_id()})
+		msg.post(self.sfx_manager, "play", {id = go.get_id()})
 	end
 end
 
