@@ -1,12 +1,24 @@
-# Welcome to Defold
+# Def-SFX
 
-This project was created from the "empty" project template.
+Def-sfx expands upon the built-in Defold Sound System and provides support for and provides support for 3D sound and real-time pan.
 
-The settings in ["game.project"](defold://open?path=/game.project) are all the default. A bootstrap empty ["main.collection"](defold://open?path=/main/main.collection) is included.
+## Installation
+You can use the Def-SFX in your own project by adding this project as a [Defold library dependency](http://www.defold.com/manuals/libraries/). Open your game.project file and in the dependencies field under project add:
 
-Check out [the documentation pages](https://defold.com/learn) for examples, tutorials, manuals and API docs.
+https://github.com/TheKing009/def-sfx/archive/master.zip
 
-If you run into trouble, help is available in [our forum](https://forum.defold.com).
+Or point to the ZIP file of a [specific release](https://github.com/TheKing009/def-sfx/releases).
+
+## Basic Usage
+
+Add the ```sfx_manager``` gameobject to a collection.
+
+Subsequently, add the sfx_source.script to the source of the sound and configure it.
+
+## API 
+
+Coming soon
+
 
 Happy Defolding!
 
