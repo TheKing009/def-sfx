@@ -28,7 +28,6 @@ function M.calculate_gain_2D(source, listener, deadzone)
 	else
 		gain = 0
 	end
-	pprint(gain)
 	return gain
 end
 
