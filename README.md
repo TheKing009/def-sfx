@@ -13,6 +13,7 @@ Def-sfx expands upon the built-in Defold Sound System and provides support for 3
     - [SFX Manager](#sfx-manager)
     - [SFX Module](#sfx-module)
   - [Usage](#usage)
+  - [Attribution](#attribution)
 
 ## Installation
 
@@ -127,6 +128,12 @@ end
 ```
 
 > **See the examples for more details.**
+
+## Attribution
+
+The music used in the example is ```Dystopian``` by ```Tim Beek```.
+
+No attribution is required for using this project in your games.
 
 Happy Defolding!
 
