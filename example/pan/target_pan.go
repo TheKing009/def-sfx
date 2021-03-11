@@ -1,6 +1,6 @@
 components {
-  id: "target"
-  component: "/example/target.script"
+  id: "target_pan"
+  component: "/example/pan/target_pan.script"
   position {
     x: 0.0
     y: 0.0

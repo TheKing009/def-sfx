@@ -1,0 +1,4 @@
+function init(self)
+	go.set_position(vmath.vector3(100, 320, 0))
+	go.animate(".", "position.x", go.PLAYBACK_LOOP_PINGPONG, 860, go.EASING_INOUTBACK, 10)
+end

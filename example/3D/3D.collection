@@ -29,7 +29,7 @@ instances {
 }
 instances {
   id: "target"
-  prototype: "/example/target.go"
+  prototype: "/example/pan/target_pan.go"
   position {
     x: 100.0
     y: 320.0
@@ -75,11 +75,6 @@ embedded_instances {
   "    type: PROPERTY_TYPE_BOOLEAN\n"
   "  }\n"
   "  properties {\n"
-  "    id: \"pan\"\n"
-  "    value: \"true\"\n"
-  "    type: PROPERTY_TYPE_BOOLEAN\n"
-  "  }\n"
-  "  properties {\n"
   "    id: \"play_on_awake\"\n"
   "    value: \"true\"\n"
   "    type: PROPERTY_TYPE_BOOLEAN\n"
@@ -87,6 +82,11 @@ embedded_instances {
   "  properties {\n"
   "    id: \"range_2D\"\n"
   "    value: \"200.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"pan_range\"\n"
+  "    value: \"300.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
