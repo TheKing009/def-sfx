@@ -1,7 +1,7 @@
 local sfx = require "def-sfx.sfx"
 
-go.property("id", hash(""))
-go.property("path", hash(""))
+go.property("path", msg.url("#sound"))
+go.property("sfx_manager", msg.url("/sfx_manager#script"))
 
 go.property("is_2D", false)
 go.property("pan", false)
@@ -13,11 +13,10 @@ go.property("pan_range", 50)
 go.property("gain", 1)
 
 function init(self)
-	msg.post("/game#sfx_manager", "register", {properties = {
-		id = self.id,
-		path = self.path
+	msg.post("/sfx_manager#sfx_manager", "register", {properties = {
+		id = go.get_id(),
+		path = self.path,
 		source = go.get_id(),
-		listener = go.get_id("/calvin"),
 
 		is_2D = self.is_2D,
 		range_2D = self.range_2D,
@@ -29,7 +28,7 @@ function init(self)
 	}})
 
 	if self.play_on_awake then
-		sfx.play(self.id)
+		msg.post("/sfx_manager#sfx_manager", "play", {id = go.get_id()})
 	end
 end
 

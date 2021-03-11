@@ -13,7 +13,11 @@ input_method = HiddenInputField
 
 [project]
 title = defsfx
+version = 0.5.0
 
 [library]
 include_dirs = def-sfx
+
+[input]
+game_binding = /builtins/input/all.input_bindingc
 

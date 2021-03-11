@@ -1,6 +1,6 @@
 local M = {}
 
-function M.calculate_pan(source, listener, deadzone)
+function M.calculate_pan(source, listener, deadzone, pan_type)
 	local dir = source - listener
 	local distance = vmath.length(dir)
 	
@@ -17,7 +17,7 @@ function M.calculate_pan(source, listener, deadzone)
 
 	pan = pan * (math.abs(dot) / dot)
 	
-	return pan
+	return -pan
 end
 
 function M.calculate_gain_2D(source, listener, deadzone)

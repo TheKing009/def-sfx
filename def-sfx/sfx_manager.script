@@ -1,7 +1,17 @@
 local sfx = require "def-sfx.sfx"
 
+go.property("target", msg.url())
+
+local REGISTER = hash("register")
+local UNREGISTER = hash("unregister")
+
+local PLAY = hash("play")
+local STOP = hash("stop")
+
+local CHANGE_TARGET = hash("change_target")
+
 function init(self)
-	self.sfx = sfx()
+	self.sfx = sfx(self.target)
 end
 
 function final(self)
@@ -14,9 +24,15 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == constants.REGISTER then
+	if message_id == REGISTER then
 		self.sfx:register(message.properties)
-	elseif message_id == constants.UNREGISTER then
+	elseif message_id == UNREGISTER then
 		self.sfx:unregister(message.id)
+	elseif message_id == PLAY then
+		self.sfx.play(message.id)
+	elseif message_id == STOP then
+		self.sfx.stop(message.id)
+	elseif message_id == CHANGE_TARGET then
+		self.sfx.target = message.target
 	end
 end
